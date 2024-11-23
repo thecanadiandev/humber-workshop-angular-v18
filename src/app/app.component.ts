@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     RouterOutlet,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule
+    LoginComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
