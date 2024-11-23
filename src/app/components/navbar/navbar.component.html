@@ -5,10 +5,10 @@
 
   <!-- Desktop Menu -->
   <div class="desktop-menu">
-    <button mat-button>Home</button>
-    <button mat-button>About</button>
-    <button mat-button>Services</button>
-    <button mat-button>Contact</button>
+    <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</button>
+    <button mat-button routerLink="/about" routerLinkActive="active">About</button>
+    <button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>
+    <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
   </div>
 
   <!-- Mobile Menu -->
@@ -16,9 +16,9 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #mobileMenu="matMenu">
-    <button mat-menu-item>Home</button>
-    <button mat-menu-item>About</button>
-    <button mat-menu-item>Services</button>
-    <button mat-menu-item>Contact</button>
+    <button mat-menu-item routerLink="/">Home</button>
+    <button mat-menu-item routerLink="/about">About</button>
+    <button mat-menu-item routerLink="/contact">Contact</button>
+    <button mat-menu-item routerLink="/login">Login</button>
   </mat-menu>
 </mat-toolbar> 
