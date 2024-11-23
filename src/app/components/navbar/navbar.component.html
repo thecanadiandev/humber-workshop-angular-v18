@@ -6,6 +6,7 @@
   <!-- Desktop Menu -->
   <div class="desktop-menu">
     <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</button>
+    <button mat-button routerLink="/products" routerLinkActive="active">Products</button>
     <button mat-button routerLink="/about" routerLinkActive="active">About</button>
     <button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>
     <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
@@ -17,6 +18,7 @@
   </button>
   <mat-menu #mobileMenu="matMenu">
     <button mat-menu-item routerLink="/">Home</button>
+    <button mat-menu-item routerLink="/products">Products</button>
     <button mat-menu-item routerLink="/about">About</button>
     <button mat-menu-item routerLink="/contact">Contact</button>
     <button mat-menu-item routerLink="/login">Login</button>
