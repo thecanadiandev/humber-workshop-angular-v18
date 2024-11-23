@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.desktop-menu {
+  display: flex;
+  gap: 8px;
+}
+
+.mobile-menu-trigger {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu-trigger {
+    display: block;
+  }
+} 

@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="navbar-brand">
+    <span>My App</span>
+  </div>
+
+  <!-- Desktop Menu -->
+  <div class="desktop-menu">
+    <button mat-button>Home</button>
+    <button mat-button>About</button>
+    <button mat-button>Services</button>
+    <button mat-button>Contact</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="mobile-menu-trigger">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #mobileMenu="matMenu">
+    <button mat-menu-item>Home</button>
+    <button mat-menu-item>About</button>
+    <button mat-menu-item>Services</button>
+    <button mat-menu-item>Contact</button>
+  </mat-menu>
+</mat-toolbar> 
