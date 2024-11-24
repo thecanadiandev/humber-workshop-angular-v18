@@ -19,6 +19,7 @@ export interface Product {
 })
 export class ProductService {
   private apiUrl = 'https://fakestoreapi.com';
+  private hasLoaded = signal<boolean>(false);
   
   // Signals for state
   products = signal<Product[]>([]);
@@ -53,6 +54,11 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   async fetchProducts(): Promise<void> {
+    // If products are already loaded, don't fetch again
+    if (this.hasLoaded()) {
+      return;
+    }
+
     try {
       this.isLoading.set(true);
       this.error.set(null);
@@ -66,6 +72,9 @@ export class ProductService {
       // Extract unique categories with proper typing
       const uniqueCategories = Array.from(new Set(data.map(product => product.category)));
       this.categories.set(uniqueCategories);
+      
+      // Mark as loaded
+      this.hasLoaded.set(true);
     } catch (err) {
       this.error.set(err instanceof Error ? err.message : 'An error occurred');
     } finally {
@@ -85,5 +94,11 @@ export class ProductService {
 
   setPage(page: number) {
     this.currentPage.set(page);
+  }
+
+  // Optional: Method to force refresh products if needed
+  async refreshProducts(): Promise<void> {
+    this.hasLoaded.set(false);
+    await this.fetchProducts();
   }
 } 
