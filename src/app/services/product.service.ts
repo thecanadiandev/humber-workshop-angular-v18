@@ -60,11 +60,11 @@ export class ProductService {
       const response = await fetch(`${this.apiUrl}/products`);
       if (!response.ok) throw new Error('Failed to fetch products');
       
-      const data = await response.json();
+      const data: Product[] = await response.json();
       this.products.set(data);
       
-      // Extract unique categories
-      const uniqueCategories = [...new Set(data.map((product: Product) => product.category))];
+      // Extract unique categories with proper typing
+      const uniqueCategories = Array.from(new Set(data.map(product => product.category)));
       this.categories.set(uniqueCategories);
     } catch (err) {
       this.error.set(err instanceof Error ? err.message : 'An error occurred');

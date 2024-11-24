@@ -9,6 +9,7 @@
              [ngModel]="searchQuery()" 
              (ngModelChange)="onSearch($event)" 
              placeholder="Search by title...">
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -32,6 +33,11 @@
   <!-- Error State -->
   <div class="error-container" *ngIf="error()">
     <p class="error-message">{{ error() }}</p>
+  </div>
+
+  <!-- No Results Message -->
+  <div class="no-results" *ngIf="!isLoading() && !error() && !products().length">
+    <p>No products found matching your search criteria.</p>
   </div>
 
   <!-- Products Grid -->
@@ -58,7 +64,7 @@
 
   <!-- Pagination -->
   <mat-paginator *ngIf="products().length"
-                 [length]="totalPages() * 6"
+                 [length]="filteredProducts().length"
                  [pageSize]="6"
                  [pageIndex]="currentPage() - 1"
                  (page)="onPageChange($event)">

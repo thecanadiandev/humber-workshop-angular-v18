@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 
@@ -22,6 +23,7 @@ import { ProductService } from '../../services/product.service';
     MatSelectModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    MatIconModule,
     FormsModule
   ],
   templateUrl: './products.component.html',
@@ -32,6 +34,7 @@ export class ProductsComponent implements OnInit {
   
   // Expose signals to template
   products = this.productService.paginatedProducts;
+  filteredProducts = this.productService.filteredProducts;
   isLoading = this.productService.isLoading;
   error = this.productService.error;
   categories = this.productService.categories;
@@ -44,8 +47,7 @@ export class ProductsComponent implements OnInit {
     this.productService.fetchProducts();
   }
 
-  onSearch(event: Event) {
-    const query = (event.target as HTMLInputElement).value;
+  onSearch(query: string) {
     this.productService.setSearchQuery(query);
   }
 
