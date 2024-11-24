@@ -1,59 +1,87 @@
-# AngularApp
+# Angular Material Demo with RxJS Examples
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.1.
+A comprehensive Angular application demonstrating Material Design components, RxJS operators, and modern Angular best practices.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 🎨 Angular Material Design
+- 📦 Standalone Components
+- 🔄 RxJS Operators Examples
+- 🎯 Signal-based State Management
+- 🚀 Lazy Loading
+- 📱 Responsive Design
+- 🖼️ Image Caching
+- 🔍 Search & Filtering
+- 📄 Pagination
 
-```bash
-ng serve
-```
+## Best Practices for Signal-Based Standalone Applications
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Do's ✅
 
-## Code scaffolding
+#### Architecture
+1. **State Management**
+   - Keep state logic in dedicated services
+   - Use computed signals for derived state
+   - Implement state immutability
+   - Use effect() for side effects
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. **Component Design**
+   - Keep components focused and small
+   - Use standalone components for better tree-shaking
+   - Implement smart/dumb component pattern
+   - Use signals for component state
 
-```bash
-ng generate component component-name
-```
+3. **Performance**
+   - Lazy load routes and features
+   - Use trackBy with ngFor
+   - Implement change detection strategies
+   - Cache HTTP responses when appropriate
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+4. **Scalability**
+   - Follow feature-based folder structure
+   - Create shared modules for common functionality
+   - Implement proper error boundaries
+   - Use TypeScript strict mode
 
-```bash
-ng generate --help
-```
+5. **Maintenance**
+   - Document signal dependencies
+   - Write unit tests for signal logic
+   - Use consistent naming conventions
+   - Keep services single-responsibility
 
-## Building
+### Don'ts ❌
 
-To build the project run:
+#### Architecture
+1. **State Management**
+   - Don't mix signals with BehaviorSubject/Subject
+   - Avoid multiple sources of truth
+   - Don't mutate signal values directly
+   - Don't use signals for static data
 
-```bash
-ng build
-```
+2. **Component Design**
+   - Don't create large monolithic components
+   - Avoid deep component nesting
+   - Don't mix template and business logic
+   - Avoid two-way binding when unnecessary
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+3. **Performance**
+   - Don't create unnecessary computed signals
+   - Avoid excessive signal updates
+   - Don't ignore memory leaks
+   - Don't skip unsubscribing from observables
 
-## Running unit tests
+4. **Scalability**
+   - Don't duplicate signal logic
+   - Avoid tight coupling between components
+   - Don't ignore TypeScript types
+   - Avoid global state when unnecessary
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+5. **Maintenance**
+   - Don't skip error handling
+   - Avoid complex signal chains
+   - Don't ignore code documentation
+   - Avoid premature optimization
 
-```bash
-ng test
-```
+### Signal-Based Architecture Example
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Project Structure
