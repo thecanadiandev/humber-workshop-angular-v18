@@ -1,0 +1,51 @@
+<div class="page-container">
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading()">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-container" *ngIf="error()">
+    <p class="error-message">{{ error() }}</p>
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-details" *ngIf="product() && !isLoading()">
+    <mat-card class="main-product">
+      <img [src]="product()!.image" [alt]="product()!.title" class="product-image">
+      <mat-card-header>
+        <mat-card-title>{{ product()!.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product()!.price | currency }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ product()!.description }}</p>
+        <div class="product-meta">
+          <mat-chip>Category: {{ product()!.category }}</mat-chip>
+          <mat-chip>Rating: {{ product()!.rating.rate }}/5</mat-chip>
+          <mat-chip>Reviews: {{ product()!.rating.count }}</mat-chip>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Add to Cart</button>
+        <button mat-button color="accent">Add to Wishlist</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Related Products -->
+    <div class="related-products" *ngIf="relatedProducts().length">
+      <h3>Related Products</h3>
+      <div class="related-grid">
+        <mat-card *ngFor="let related of relatedProducts()">
+          <img [src]="related.image" [alt]="related.title" class="related-image">
+          <mat-card-header>
+            <mat-card-title>{{ related.title }}</mat-card-title>
+            <mat-card-subtitle>{{ related.price | currency }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button color="primary">View Details</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div> 

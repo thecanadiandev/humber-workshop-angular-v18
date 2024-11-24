@@ -10,6 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -24,7 +25,8 @@ import { ProductService } from '../../services/product.service';
     MatFormFieldModule,
     MatPaginatorModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'

@@ -1,0 +1,214 @@
+<div class="page-container">
+  <h2>RxJS Operators Examples</h2>
+  <p class="intro">Real-world examples of RxJS operators using the Fake Store API</p>
+
+  <div class="examples-grid">
+    <!-- SwitchMap Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>SwitchMap Example</mat-card-title>
+        <mat-card-subtitle>Get product with related items</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>SwitchMap cancels previous observables and switches to the new one. Here, it:</p>
+            <ul>
+              <li>Fetches a product by ID</li>
+              <li>Then fetches related products in the same category</li>
+              <li>Cancels previous requests if a new one starts</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Search autocomplete</li>
+              <li>Related items fetching</li>
+              <li>Real-time updates</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['switchMap']">{{ results['switchMap'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testSwitchMap()">Test SwitchMap</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- ForkJoin Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>ForkJoin Example</mat-card-title>
+        <mat-card-subtitle>Parallel API calls</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>ForkJoin combines multiple observables and waits for all to complete. Here, it:</p>
+            <ul>
+              <li>Makes multiple API calls in parallel</li>
+              <li>Combines the results into a single object</li>
+              <li>Returns only when all requests complete</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Loading dashboard data</li>
+              <li>Initializing app with multiple API calls</li>
+              <li>Combining independent data sources</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['forkJoin']">{{ results['forkJoin'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testForkJoin()">Test ForkJoin</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- ConcatMap Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>ConcatMap Example</mat-card-title>
+        <mat-card-subtitle>Sequential API calls</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>ConcatMap processes observables in sequence, one after another. Here, it:</p>
+            <ul>
+              <li>Updates a product</li>
+              <li>Waits for update to complete</li>
+              <li>Then fetches the updated product list</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Save then refresh</li>
+              <li>Sequential file uploads</li>
+              <li>Dependent API calls</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['concatMap']">{{ results['concatMap'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testConcatMap()">Test ConcatMap</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Search Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Search Example</mat-card-title>
+        <mat-card-subtitle>debounceTime & distinctUntilChanged</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>Combines multiple operators for efficient search:</p>
+            <ul>
+              <li>debounceTime: Waits for user to stop typing</li>
+              <li>distinctUntilChanged: Ignores duplicate searches</li>
+              <li>switchMap: Cancels previous search requests</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Search-as-you-type</li>
+              <li>Autocomplete</li>
+              <li>Filtered lists</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['search']">{{ results['search'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testSearch()">Test Search</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Delay Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Delay Example</mat-card-title>
+        <mat-card-subtitle>delay & tap operators</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>Shows how to handle loading states and delays:</p>
+            <ul>
+              <li>tap: Shows loading state</li>
+              <li>delay: Simulates network delay</li>
+              <li>tap: Updates UI when complete</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Loading indicators</li>
+              <li>Animations</li>
+              <li>Rate limiting</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['delay']">{{ results['delay'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testDelayAndTap()">Test Delay</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Category Example -->
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Category Example</mat-card-title>
+        <mat-card-subtitle>map & switchMap with limit</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>View Explanation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="explanation">
+            <h4>What it does:</h4>
+            <p>Demonstrates data transformation and limiting:</p>
+            <ul>
+              <li>map: Limits number of products</li>
+              <li>switchMap: Gets details for each product</li>
+              <li>forkJoin: Combines all product details</li>
+            </ul>
+            <h4>Use cases:</h4>
+            <ul>
+              <li>Paginated data</li>
+              <li>Data enrichment</li>
+              <li>Nested API calls</li>
+            </ul>
+          </div>
+        </mat-expansion-panel>
+        <pre *ngIf="results['category']">{{ results['category'] | json }}</pre>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="testCategoryProducts()">Test Category</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="warn" (click)="clearResults()">Clear All Results</button>
+  </div>
+</div> 

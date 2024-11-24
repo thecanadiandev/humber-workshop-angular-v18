@@ -14,6 +14,16 @@ export const routes: Routes = [
       .then(m => m.ProductsComponent)
   },
   {
+    path: 'products/:id',
+    loadComponent: () => import('./pages/product-details/product-details.component')
+      .then(m => m.ProductDetailsComponent)
+  },
+  {
+    path: 'rxjs-examples',
+    loadComponent: () => import('./pages/rxjs-examples/rxjs-examples.component')
+      .then(m => m.RxjsExamplesComponent)
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact.component')
       .then(m => m.ContactComponent)
