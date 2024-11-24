@@ -1,9 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MaterialModule } from '../../shared/material.module';
 import { ProductService } from '../../services/product.service';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -12,10 +9,7 @@ import { Subject, takeUntil } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatExpansionModule
+    MaterialModule
   ],
   templateUrl: './rxjs-examples.component.html',
   styleUrl: './rxjs-examples.component.css'
