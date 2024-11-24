@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
+  background-color: var(--toolbar-background);
+  transition: background-color 0.3s ease;
 }
 
 .navbar-brand {
@@ -14,6 +16,11 @@
 .desktop-menu {
   display: flex;
   gap: 8px;
+  align-items: center;
+}
+
+.mobile-controls {
+  display: none;
 }
 
 .mobile-menu-trigger {
@@ -29,6 +36,12 @@
 @media (max-width: 768px) {
   .desktop-menu {
     display: none;
+  }
+
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .mobile-menu-trigger {

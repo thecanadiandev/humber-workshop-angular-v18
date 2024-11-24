@@ -1,30 +1,64 @@
-<mat-toolbar color="primary" class="navbar">
+<mat-toolbar [class.dark-theme]="isDarkMode()" color="primary" class="navbar">
   <div class="navbar-brand">
     <span>My App</span>
   </div>
 
   <!-- Desktop Menu -->
   <div class="desktop-menu">
+    <!-- Public Routes -->
     <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</button>
-    <button mat-button routerLink="/products" routerLinkActive="active">Products</button>
     <button mat-button routerLink="/about" routerLinkActive="active">About</button>
     <button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>
-    <button mat-button routerLink="/profile" routerLinkActive="active">Profile</button>
-    <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
     <button mat-button routerLink="/rxjs-examples" routerLinkActive="active">RxJS Examples</button>
+    
+    <!-- Protected Routes - Only show when authenticated -->
+    <ng-container *ngIf="isAuthenticated()">
+      <button mat-button routerLink="/products" routerLinkActive="active">Products</button>
+      <button mat-button routerLink="/profile" routerLinkActive="active">Profile</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </ng-container>
+    
+    <!-- Login - Only show when not authenticated -->
+    <button mat-button *ngIf="!isAuthenticated()" routerLink="/login" routerLinkActive="active">Login</button>
+    
+    <!-- Theme Toggle -->
+    <button mat-icon-button (click)="toggleTheme()" [matTooltip]="isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+      <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
   </div>
 
   <!-- Mobile Menu -->
-  <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="mobile-menu-trigger">
-    <mat-icon>menu</mat-icon>
-  </button>
+  <div class="mobile-controls">
+    <!-- Theme Toggle for Mobile -->
+    <button mat-icon-button (click)="toggleTheme()" [matTooltip]="isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+      <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+    
+    <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="mobile-menu-trigger">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Items -->
   <mat-menu #mobileMenu="matMenu">
+    <!-- Public Routes -->
     <button mat-menu-item routerLink="/">Home</button>
-    <button mat-menu-item routerLink="/products">Products</button>
     <button mat-menu-item routerLink="/about">About</button>
     <button mat-menu-item routerLink="/contact">Contact</button>
-    <button mat-menu-item routerLink="/profile">Profile</button>
-    <button mat-menu-item routerLink="/login">Login</button>
     <button mat-menu-item routerLink="/rxjs-examples">RxJS Examples</button>
+    
+    <!-- Protected Routes - Only show when authenticated -->
+    <ng-container *ngIf="isAuthenticated()">
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/products">Products</button>
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </ng-container>
+    
+    <!-- Login - Only show when not authenticated -->
+    <ng-container *ngIf="!isAuthenticated()">
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/login">Login</button>
+    </ng-container>
   </mat-menu>
 </mat-toolbar> 

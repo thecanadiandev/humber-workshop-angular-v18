@@ -1,18 +1,34 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MaterialModule } from '../../shared/material.module';
+import { MaterialModule } from '@shared/material.module';
+import { ThemeService } from '@services/theme.service';
+import { AuthService } from '@services/auth.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    CommonModule,
     RouterLink,
     RouterLinkActive,
-    MaterialModule
+    MaterialModule,
+    MatTooltipModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {} 
+export class NavbarComponent {
+  private themeService = inject(ThemeService);
+  private authService = inject(AuthService);
+  
+  isDarkMode = this.themeService.isDarkMode;
+  isAuthenticated = this.authService.isAuthenticated;
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+} 

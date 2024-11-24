@@ -1,15 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../shared/material.module';
-import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ProductService } from '../../services/product.service';
+import { MaterialModule } from '@shared/material.module';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from '@services/product.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
-    CommonModule,
     MaterialModule,
     FormsModule,
     RouterLink
@@ -20,7 +18,6 @@ import { ProductService } from '../../services/product.service';
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
   
-  // Expose signals to template
   products = this.productService.paginatedProducts;
   filteredProducts = this.productService.filteredProducts;
   isLoading = this.productService.isLoading;

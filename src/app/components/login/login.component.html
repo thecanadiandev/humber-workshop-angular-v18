@@ -1,18 +1,47 @@
 <div class="form-container">
-  <mat-form-field appearance="outline">
-    <mat-label>Enter your name</mat-label>
-    <input matInput placeholder="John Doe">
-    <mat-icon matSuffix>person</mat-icon>
-  </mat-form-field>
+  <h2>Login</h2>
+  
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput 
+             [(ngModel)]="username" 
+             name="username" 
+             required
+             placeholder="mor_2314">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="john@example.com" type="email">
-    <mat-icon matSuffix>email</mat-icon>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput 
+             [(ngModel)]="password" 
+             name="password" 
+             type="password" 
+             required
+             placeholder="83r5^_">
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
 
-  <div class="button-container">
-    <button mat-raised-button color="primary">Submit</button>
-    <button mat-stroked-button color="warn">Cancel</button>
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button 
+              color="primary" 
+              type="submit"
+              [disabled]="isLoading">
+        {{ isLoading ? 'Logging in...' : 'Login' }}
+      </button>
+    </div>
+  </form>
+
+  <div class="demo-credentials">
+    <p>Demo credentials:</p>
+    <code>
+      username: mor_2314<br>
+      password: 83r5^_
+    </code>
   </div>
 </div> 

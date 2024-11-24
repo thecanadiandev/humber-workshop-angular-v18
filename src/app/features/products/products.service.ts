@@ -3,6 +3,7 @@ import { AppStateService } from '../../core/state/app.state';
 import { ApiService } from '../../core/api/api.service';
 import { API_ENDPOINTS } from '../../core/api/endpoints.config';
 import { withDebounce } from '../../core/utils/rxjs.utils';
+import { Product } from '../../services/product.service';
 
 @Injectable({
   providedIn: 'root'
