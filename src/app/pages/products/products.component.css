@@ -4,19 +4,93 @@
   margin: 0 auto;
 }
 
+.controls-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.controls-container mat-form-field {
+  flex: 1;
+  min-width: 200px;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
   padding: 1rem 0;
+  margin-bottom: 2rem;
 }
 
 mat-card {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  height: 200px;
+  object-fit: contain;
+  padding: 1rem;
+}
+
+mat-card-content {
+  flex-grow: 1;
+  padding: 1rem;
 }
 
 mat-card-actions {
   display: flex;
   gap: 8px;
   padding: 16px;
+  justify-content: flex-end;
+}
+
+.product-category {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.product-rating {
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 1.1em;
+}
+
+mat-card-title {
+  font-size: 1.1em;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+mat-paginator {
+  margin-top: 2rem;
 } 
