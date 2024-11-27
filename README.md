@@ -174,3 +174,5 @@ A comprehensive Angular application demonstrating Material Design components, Rx
 - Don't skip error case testing
 - Avoid complex signal mocks
 - Don't ignore cleanup testing
+
+Docs done
